@@ -10,7 +10,6 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var realFavicon = require ('gulp-real-favicon');
 var fs = require('fs');
-var favicon = require('./gulp/favicon');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -169,7 +168,7 @@ gulp.task('generate-favicon', function(done) {
 gulp.task('inject-favicon-markups', function() {
 	return gulp.src([ './index.html' ])
 		.pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
-		.pipe(gulp.dest('./dist/'));
+		.pipe(gulp.dest('./'));
 });
 
 // Check for updates on RealFaviconGenerator (think: Apple has just
